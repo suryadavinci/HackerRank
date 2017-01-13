@@ -53,5 +53,29 @@ public class LinkedList {
 		return tempHead;
 
 	}
+	
+	Node linkFirst(Node head,int x) {
+	    
+	    Node tempHead= head;
+	    
+	    if(head==null)
+	        {
+	        head=new Node();
+	        head.data=x;
+	        head.next=null;
+	        return head;
+	    }
+	    
+	    
+	    head= new Node();
+	    head.next= tempHead;
+	    head.data=x;
+	    
+	    return head;
+	    
+	}
+	
+	
+	
 
 }
