@@ -27,6 +27,12 @@ public class BinaryTree {
 		Insert(root, 3);
 		Insert(root, 6);
 		Insert(root, 8);
+		Insert(root, 4);*/
+		
+		Insert(root, 1);
+		Insert(root, 2);
+		Insert(root, 3);
+		Insert(root, 5);
 		Insert(root, 4);
 		
 		
@@ -60,10 +66,16 @@ public class BinaryTree {
 
 	static int traverseHeight(Node root, String dir) {
 		int height = 0;
+		Node prev;
 		if (dir == "l") {
 			while (root != null) {
 				height++;
+				prev=root.right;
 				root = root.left;
+				if(root==null && prev!=null)
+				{
+					height=height+traverseHeight(prev,"r");
+				}
 			}
 
 		}
@@ -71,7 +83,12 @@ public class BinaryTree {
 		if (dir == "r") {
 			while (root != null) {
 				height++;
+				prev=root.left;
 				root = root.right;
+				if(root==null && prev!=null)
+				{
+					height=height+traverseHeight(prev,"l");
+				}
 			}
 		}
 		return height;
