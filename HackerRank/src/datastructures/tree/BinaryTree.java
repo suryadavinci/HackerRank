@@ -10,53 +10,115 @@ class Node {
 
 public class BinaryTree {
 
+	private static int minValue = 1000;
+	private static int maxValue;
+	private static int maxHeight = 0;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		Node root = new Node();
-		root.data = 4;
+		root.data = 5;
 		Node source = root;
 
-		Insert(root, 2);
+		/*Insert(root, 2);
 		Insert(root, 7);
 		Insert(root, 1);
 		Insert(root, 3);
 		Insert(root, 6);
+		Insert(root, 8);
+		Insert(root, 4);
+		
+		
+		
+		/*
+		 * Insert(root, 9); Insert(root, 10); Insert(root, 11);
+		 */
+
+		inOrder(root);
+		System.out.println();
+
+		getHeight(root);
 		// System.out.println();
 
 		// System.out.println(checkBST(root));
 
-		System.out.println(checkBST(root));
+		/*
+		 * inOrder(root); setMinMax(root.left); System.out.println();
+		 * System.out.println(minValue); System.out.println(maxValue);
+		 * setMaxHeight(root.left); System.out.println("maxHeight "+maxHeight);
+		 * 
+		 * 
+		 * System.out.println("root right data"+root.right.data); minValue=1000;
+		 * setMinMax(root.right); System.out.println();
+		 * System.out.println(minValue); System.out.println(maxValue);
+		 * 
+		 * setMaxHeight(root.right); System.out.println(maxHeight);
+		 */
 
-		Node node1 = new Node();
-		Node node2 = new Node();
-		Node node3 = new Node();
-		Node node4 = new Node();
-		Node node5 = new Node();
-		Node node6 = new Node();
-		Node node7 = new Node();
+	}
 
-		node1.data = 5;
-		node2.data = 2;
-		node3.data = 6;
-		node4.data = 1;
-		node5.data = 3;
-		node6.data = 4;
-		node7.data = 7;
+	static int traverseHeight(Node root, String dir) {
+		int height = 0;
+		if (dir == "l") {
+			while (root != null) {
+				height++;
+				root = root.left;
+			}
 
-		node1.left = node2;
-		node1.right = node3;
+		}
 
-		node2.left = node4;
-		node2.right = node5;
+		if (dir == "r") {
+			while (root != null) {
+				height++;
+				root = root.right;
+			}
+		}
+		return height;
 
-		node3.left = node6;
-		node3.right = node7;
+	}
 
-		// inOrder(node1);
-		// System.out.println();
-		// preOrder(node1);
-		System.out.println(checkBST(node1));
+	static void getHeight(Node root) {
+		int maxHeight = 0, height = 0;
+		Node source = root;
+
+		// left traversal for left tree
+		root = source.left;
+		height = 0;
+
+		height = traverseHeight(root, "l");
+		if (height > maxHeight)
+			maxHeight = height;
+
+		System.out.println("height of left left " + height);
+
+		root = source.left;
+		height = 0;
+		height = traverseHeight(root, "r");
+
+		if (height > maxHeight)
+			maxHeight = height;
+
+		System.out.println("height of left right " + height);
+
+		root = source.right;
+		height = 0;
+		height = traverseHeight(root, "l");
+
+		if (height > maxHeight)
+			maxHeight = height;
+
+		System.out.println("height of right left " + height);
+
+		root = source.right;
+		height = 0;
+		height = traverseHeight(root, "r");
+
+		if (height > maxHeight)
+			maxHeight = height;
+		System.out.println("height of right right " + height);
+
+		System.out.println(maxHeight);
 
 	}
 
@@ -140,6 +202,51 @@ public class BinaryTree {
 			postOrder(root.left);
 			postOrder(root.right);
 			System.out.print(root.data + " ");
+		}
+
+	}
+
+	static void setMaxHeight(Node root) {
+		int height = 0;
+		Node source = root;
+		while (root != null) {
+			height++;
+			root = root.left;
+			System.out.println("height value inside left loop" + height);
+
+		}
+
+		if (height > maxHeight) {
+			System.out.println("setting height to " + height + " for min");
+			maxHeight = height;
+		}
+
+		height = 0;
+		root = source;
+		while (root != null) {
+			height++;
+			System.out.println("height value inside right loop" + height);
+			root = root.right;
+
+		}
+		if (height > maxHeight) {
+			maxHeight = height;
+			System.out.println("setting height to " + height + " for max");
+		}
+
+	}
+
+	static void setMinMax(Node root) {
+
+		if (root != null) {
+			setMinMax(root.left);
+			if (minValue > root.data)
+				minValue = root.data;
+			if (maxValue < root.data)
+				maxValue = root.data;
+
+			setMinMax(root.right);
+
 		}
 
 	}
