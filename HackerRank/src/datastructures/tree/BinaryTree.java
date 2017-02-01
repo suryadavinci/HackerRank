@@ -1,5 +1,9 @@
 package datastructures.tree;
 
+import java.util.Arrays;
+
+import datastructures.AllUtils;
+
 class Node {
 
 	Node left;
@@ -18,52 +22,109 @@ public class BinaryTree {
 		// TODO Auto-generated method stub
 
 		Node root = new Node();
-		root.data = 5;
+		root.data = 4;
 		Node source = root;
 
-		/*Insert(root, 2);
-		Insert(root, 7);
+		Insert(root, 2);
+		Insert(root, 6);
 		Insert(root, 1);
 		Insert(root, 3);
-		Insert(root, 6);
-		Insert(root, 8);
-		Insert(root, 4);*/
+		//Insert(root, 5);
+		Insert(root, 7);
 		
+		/*
 		Insert(root, 1);
 		Insert(root, 2);
 		Insert(root, 3);
-		Insert(root, 5);
 		Insert(root, 4);
-		
-		
+		Insert(root, 5);
+
+*/
+		levelOrder(root);
 		
 		/*
 		 * Insert(root, 9); Insert(root, 10); Insert(root, 11);
 		 */
 
-		inOrder(root);
-		System.out.println();
 
-		getHeight(root);
-		// System.out.println();
 
-		// System.out.println(checkBST(root));
 
-		/*
-		 * inOrder(root); setMinMax(root.left); System.out.println();
-		 * System.out.println(minValue); System.out.println(maxValue);
-		 * setMaxHeight(root.left); System.out.println("maxHeight "+maxHeight);
-		 * 
-		 * 
-		 * System.out.println("root right data"+root.right.data); minValue=1000;
-		 * setMinMax(root.right); System.out.println();
-		 * System.out.println(minValue); System.out.println(maxValue);
-		 * 
-		 * setMaxHeight(root.right); System.out.println(maxHeight);
-		 */
 
 	}
+	
+	
+	static  String rootLeftRight(Node root)
+	{
+		
+		
+		
+		return root.left.data+" "+root.right.data;
+	}
+	
+	
+	 static void levelOrder(Node root)
+	    {
+		 	Node source= root;
+		 	
+		 	
+		 	int check=1;
+		 	
+		 	String[] path;
+		 	
+		 	int height=height(root);
+		 	
+		 	//System.out.println(height+" height");
+		 	for(int i=0;i<=height;i++)
+		 	{
+		 		if(i==0)
+		 			{
+	 				System.out.println(root.data+" ");
+	 				
+		 			}
+		 		else{
+		 		path=AllUtils.binaryString(i);
+		 		
+		 		//System.out.println(Arrays.toString(path));
+		 		
+		 		for(int j=0;j<path.length;j++)
+		 		{	root=source;
 
+		 		//System.out.println();
+		 		//System.out.println("iterating path "+path[j]);
+		 			for(int k=0;k<path[j].length();k++)
+		 			{
+		 				
+		 				
+		 				if(path[j].charAt(k)=='0' 
+		 						//&& root.left!=null
+		 						)
+		 					root=root.left;
+		 				else if(path[j].charAt(k)=='1' 
+		 						//&& root.right!=null
+		 						)
+		 					root=root.right;
+		 			}
+		 			if(root!=null)
+		 				System.out.print(root.data+" ");
+		 			
+		 		}
+		 		System.out.println();
+		 		}
+		 	}
+		 	
+		 	
+	       
+	      
+	    }
+	
+	
+	
+	static int height(Node root) {
+	    if(root==null) return -1;
+	    return 1+Math.max(height(root.left),height(root.right));
+	}
+	
+	
 	static int traverseHeight(Node root, String dir) {
 		int height = 0;
 		Node prev;
