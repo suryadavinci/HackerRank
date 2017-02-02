@@ -31,6 +31,7 @@ public class BinaryTree {
 		Insert(root, 3);
 		//Insert(root, 5);
 		Insert(root, 7);
+		Insert(root, 8);
 		
 		/*
 		Insert(root, 1);
@@ -39,7 +40,11 @@ public class BinaryTree {
 		Insert(root, 4);
 		Insert(root, 5);
 
-*/
+*/		
+		System.out.println("Inorder");
+		inOrder(root);
+		System.out.println();
+		System.out.println("Level Order");
 		levelOrder(root);
 		
 		/*
@@ -53,13 +58,9 @@ public class BinaryTree {
 	}
 	
 	
-	static  String rootLeftRight(Node root)
-	{
-		
-		
-		
-		return root.left.data+" "+root.right.data;
-	}
+	
+	
+	
 	
 	
 	 static void levelOrder(Node root)
@@ -78,7 +79,7 @@ public class BinaryTree {
 		 	{
 		 		if(i==0)
 		 			{
-	 				System.out.println(root.data+" ");
+	 				System.out.print(root.data+" ");
 	 				
 		 			}
 		 		else{
@@ -95,20 +96,31 @@ public class BinaryTree {
 		 			{
 		 				
 		 				
-		 				if(path[j].charAt(k)=='0' 
-		 						//&& root.left!=null
-		 						)
-		 					root=root.left;
-		 				else if(path[j].charAt(k)=='1' 
-		 						//&& root.right!=null
-		 						)
-		 					root=root.right;
+		 				if(path[j].charAt(k)=='0')
+		 					{
+		 					if(root.left==null)
+		 						{root=null;
+		 						break;
+		 						}
+		 					else
+		 						root=root.left;
+		 					
+		 					}
+		 				else if(path[j].charAt(k)=='1')
+		 					{
+		 					if(root.right==null)
+		 						{root=null;
+		 						break;
+		 						}
+		 					else
+		 						root=root.right;
+		 					}
 		 			}
 		 			if(root!=null)
 		 				System.out.print(root.data+" ");
 		 			
 		 		}
-		 		System.out.println();
+		 		//System.out.println();
 		 		}
 		 	}
 		 	
