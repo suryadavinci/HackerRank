@@ -17,137 +17,349 @@ public class BinaryTree {
 	private static int minValue = 1000;
 	private static int maxValue;
 	private static int maxHeight = 0;
+	
+	
+	
+	
+	public static Node avlInsert(Node root, int val)
+	{
+		Insert(root, val);
+		String avl=checkAVL(root);
+		
+		if(!avl.equals("balanced"))
+		{
+			
+			
+			
+			//System.out.println("avl of left and right "+checkAVL(root.left)+" "+checkAVL(root.right));
+			if(root.left!=null 
+					//&& !checkAVL(root.left).equals("balanced")
+					)
+				{
+				
+//				System.out.println("have to balance left sub tree "+ checkAVL(root.left));
+				
+				root.left = makeAVL(root.left, checkAVL(root.left));
+				System.out.println("Level Order After left AVL ");
+				levelOrder(root);
+				
+				}
+			if(root.right!=null 
+					//&& !checkAVL(root.right).equals("balanced")
+					)
+				{
+//				System.out.println("have to balance left sub tree"+ checkAVL(root.right));
+				root.right=makeAVL(root.right, checkAVL(root.right));
+				System.out.println("Level Order After left AVL ");
+				levelOrder(root);
+				
+				}
+			
+			root=makeAVL(root, checkAVL(root));
+			
+			//System.out.println(root);
+			//System.out.println(root.left);
+			//System.out.println(root.right);
+			
+			
+			
+		}
+		
+		
+		return root;
+		
+		}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		Node root = new Node();
-		root.data = 4;
+		root.data = 2;
 		Node source = root;
 
-		Insert(root, 2);
-		Insert(root, 6);
-		Insert(root, 1);
-		Insert(root, 3);
-		//Insert(root, 5);
-		Insert(root, 7);
-		Insert(root, 8);
-		
 		/*
-		Insert(root, 1);
-		Insert(root, 2);
-		Insert(root, 3);
-		Insert(root, 4);
-		Insert(root, 5);
-
-*/		
-		System.out.println("Inorder");
-		inOrder(root);
-		System.out.println();
-		System.out.println("Level Order");
-		levelOrder(root);
-		
-		/*
-		 * Insert(root, 9); Insert(root, 10); Insert(root, 11);
+		 * ll Insert(root, 2); Insert(root, 6); Insert(root, 1); Insert(root,
+		 * 3); Insert(root, 5); Insert(root, 7); Insert(root, 0); Insert(root,
+		 * -1);
 		 */
 
+		/*
+		 * lr Insert(root, 2); Insert(root, 6); Insert(root, 1); Insert(root,
+		 * 4); Insert(root, 3);
+		 */
 
+		/*lr
+		 * Insert(root, 1);
+		Insert(root, 4);
+		Insert(root, 3);
+		Insert(root, 6);
+		Insert(root, 5);
+		Insert(root, 7);*/
+		
+		//rl
+		/*Insert(root, 0);
+		Insert(root, 5);
+		Insert(root, 3);
+		Insert(root, 6);
+		Insert(root, 2);
+		Insert(root, 4);*/
+		
+		
+		for(int i=3;i<=6;i++)
+		{
+			String avl="";
+			Insert(root, i);
+			System.out.println("\n"+i+" inserted");
+			avl=checkAVL(root);
+			System.out.println("======================");
+			System.out.println("Level Order Before AVL");
+			System.out.println("======================");
+			levelOrder(root);
+			if(!avl.equals("balanced"))
+			{
+				
+				
+				
+				//System.out.println("avl of left and right "+checkAVL(root.left)+" "+checkAVL(root.right));
+				if(root.left!=null 
+						//&& !checkAVL(root.left).equals("balanced")
+						)
+					{
+					
+//					System.out.println("have to balance left sub tree "+ checkAVL(root.left));
+					
+					root.left = makeAVL(root.left, checkAVL(root.left));
+					System.out.println("Level Order After left AVL ");
+					levelOrder(root);
+					
+					}
+				if(root.right!=null 
+						//&& !checkAVL(root.right).equals("balanced")
+						)
+					{
+	//				System.out.println("have to balance left sub tree"+ checkAVL(root.right));
+					root.right=makeAVL(root.right, checkAVL(root.right));
+					System.out.println("Level Order After left AVL ");
+					levelOrder(root);
+					
+					}
+				
+				root=makeAVL(root, checkAVL(root));
+				
+				//System.out.println(root);
+				//System.out.println(root.left);
+				//System.out.println(root.right);
+				
+				
+				
+			}
+			System.out.println("======================");
+			System.out.println("Level Order After AVL ");
+			System.out.println("======================");
+			levelOrder(root);
+					
+			
+		}
+		
+		
+		
+		
+/*		
+		
+		
 
+		System.out.println();
+		System.out.println("Level Order Before");
+		levelOrder(root);
 
+		System.out.println(checkAVL(root));
+		root = makeAVL(root, checkAVL(root));
+
+		System.out.println("Level Order after avl check");
+		levelOrder(root);
+
+*/ 
+	}
+
+	static Node makeAVL(Node root, String type) {
+		Node source = root;
+		Node currentRoot;
+		Node newRoot;
+		Node a;
+		Node b;
+		Node c;
+		Node d;
+
+		if (type.equals("ll")) {
+			 //System.out.println("inside ll");
+			currentRoot = root;
+			newRoot = root.left;
+			c = newRoot.right;
+			newRoot.right = currentRoot;
+			currentRoot.left = c;
+			return newRoot;
+		}
+		if (type.equals("lr")) {
+			//System.out.println("inside lr");
+			currentRoot = root;
+			newRoot = root.left.right;
+			b = newRoot.left;
+			c = newRoot.right;
+
+			newRoot.left = currentRoot.left;
+			newRoot.right = currentRoot;
+			newRoot.left.right = b;
+			newRoot.right.left = c;
+
+			return newRoot;
+
+		}
+
+		if(type.equals("rr"))
+		{
+			//System.out.println("inside rr");
+		currentRoot=root;
+		newRoot=root.right;
+		b=newRoot.left;
+		newRoot.left=currentRoot;
+		currentRoot.right=b;
+		return newRoot;
+		}
+		
+		
+		if (type.equals("rl")) {
+			//System.out.println("inside rl");
+			currentRoot = root;
+			newRoot = root.right.left;
+			b = newRoot.left;
+			c = newRoot.right;
+
+			newRoot.left = currentRoot;
+			newRoot.right = currentRoot.right;
+			newRoot.left.right = b;
+			newRoot.right.left = c;
+
+			return newRoot;
+
+		}
+		
+		return source;
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	 static void levelOrder(Node root)
-	    {
-		 	Node source= root;
-		 	
-		 	
-		 	int check=1;
-		 	
-		 	String[] path;
-		 	
-		 	int height=height(root);
-		 	
-		 	//System.out.println(height+" height");
-		 	for(int i=0;i<=height;i++)
-		 	{
-		 		if(i==0)
-		 			{
-	 				System.out.print(root.data+" ");
-	 				
-		 			}
-		 		else{
-		 		path=AllUtils.binaryString(i);
-		 		
-		 		//System.out.println(Arrays.toString(path));
-		 		
-		 		for(int j=0;j<path.length;j++)
-		 		{	root=source;
 
-		 		//System.out.println();
-		 		//System.out.println("iterating path "+path[j]);
-		 			for(int k=0;k<path[j].length();k++)
-		 			{
-		 				
-		 				
-		 				if(path[j].charAt(k)=='0')
-		 					{
-		 					if(root.left==null)
-		 						{root=null;
-		 						break;
-		 						}
-		 					else
-		 						root=root.left;
-		 					
-		 					}
-		 				else if(path[j].charAt(k)=='1')
-		 					{
-		 					if(root.right==null)
-		 						{root=null;
-		 						break;
-		 						}
-		 					else
-		 						root=root.right;
-		 					}
-		 			}
-		 			if(root!=null)
-		 				System.out.print(root.data+" ");
-		 			
-		 		}
-		 		//System.out.println();
-		 		}
-		 	}
-		 	
-		 	
-	       
-	      
-	    }
-	
-	
-	
+	static String checkAVL(Node root) {
+
+		Node source = root;
+
+		int lHeight = height(root.left) + 1;
+		int rHeight = height(root.right) + 1;
+		System.out.println();
+		 //System.out.println("left Height " + lHeight);
+		 //System.out.println("right Height " + rHeight);
+		 System.out.println(lHeight - rHeight);
+		if (lHeight - rHeight > 1) {
+			 //System.out.println("inside Left Height check");
+			for (int i = 0; i <= lHeight; i++) {
+				if (root.left != null)
+					root = root.left;
+				else if (i == lHeight)
+					return "ll";
+				else
+					return "lr";
+			}
+		} else if (lHeight - rHeight < -1) {
+			root = source;
+			 //System.out.println("inside right Height check");
+			for (int i = 0; i <= rHeight; i++) {
+
+				if (root.right != null) {
+					// System.out.println("printing root data i: " + i + "  "+
+					// root.data + " " + root.right);
+					root = root.right;
+
+				} else if (root.right == null && i == rHeight) {
+					 //System.out.println("root.right is null " + i + " "+
+					// rHeight);
+					return "rr";
+				} else
+					return "rl";
+
+			}
+		} else
+			return "balanced";
+
+		return "fail";
+
+	}
+
+	static void levelOrder(Node root) {
+		Node source = root;
+
+		int check = 1;
+
+		String[] path;
+
+		int height = height(root);
+
+		// System.out.println(height+" height");
+		for (int i = 0; i <= height; i++) {
+			if (i == 0) {
+				System.out.println(root.data + " ");
+
+			} else {
+				path = AllUtils.binaryString(i);
+
+				// System.out.println(Arrays.toString(path));
+
+				for (int j = 0; j < path.length; j++) {
+					root = source;
+
+					// System.out.println();
+					// System.out.println("iterating path "+path[j]);
+					for (int k = 0; k < path[j].length(); k++) {
+
+						if (path[j].charAt(k) == '0') {
+							if (root.left == null) {
+								root = null;
+								break;
+							} else
+								root = root.left;
+
+						} else if (path[j].charAt(k) == '1') {
+							if (root.right == null) {
+								root = null;
+								break;
+							} else
+								root = root.right;
+						}
+					}
+					if (root != null)
+						System.out.print(root.data + " ");
+
+				}
+				System.out.println();
+			}
+		}
+
+	}
+
 	static int height(Node root) {
-	    if(root==null) return -1;
-	    return 1+Math.max(height(root.left),height(root.right));
+		if (root == null)
+			return -1;
+		return 1 + Math.max(height(root.left), height(root.right));
 	}
-	
-	
+
 	static int traverseHeight(Node root, String dir) {
 		int height = 0;
 		Node prev;
 		if (dir == "l") {
 			while (root != null) {
 				height++;
-				prev=root.right;
+				prev = root.right;
 				root = root.left;
-				if(root==null && prev!=null)
-				{
-					height=height+traverseHeight(prev,"r");
+				if (root == null && prev != null) {
+					height = height + traverseHeight(prev, "r");
 				}
 			}
 
@@ -156,11 +368,10 @@ public class BinaryTree {
 		if (dir == "r") {
 			while (root != null) {
 				height++;
-				prev=root.left;
+				prev = root.left;
 				root = root.right;
-				if(root==null && prev!=null)
-				{
-					height=height+traverseHeight(prev,"l");
+				if (root == null && prev != null) {
+					height = height + traverseHeight(prev, "l");
 				}
 			}
 		}
