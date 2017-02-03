@@ -565,6 +565,14 @@ public class BinaryTree {
 
 	static Node Insert(Node root, int value) {
 		Node source = root;
+		
+		if(root==null)
+		{
+			root=new Node();
+			root.data=value;
+			return root;
+		}
+		
 
 		if (root.data <= value) {
 			insertRight(root, value);
