@@ -21,6 +21,7 @@ public class FreshBinaryTree {
 		printOrder(root,"i");
 		printOrder(root,"l");
 		
+		topView(root);
 		//System.out.println(getHeight(root));
 		
 		//levelOrder(root);
@@ -163,6 +164,34 @@ public class FreshBinaryTree {
 		else
 		return 1+Math.max(getHeight(root.left),getHeight(root.right)); 
 	}
-		
+	
+	
+	
+	
+	public static void topView(Node root)
+	{
+		printLeftView(root.left);
+		System.out.print(root.data+" ");
+		printRightView(root.right);
+	}
+	
+	
+	public static void printLeftView(Node root)
+	{
+		if(root!=null)
+		{
+			printLeftView(root.left);
+			System.out.print(root.data+" ");
+		}
+	}
+	public static void printRightView(Node root)
+	{
+		if(root!=null)
+		{
+			System.out.print(root.data+" ");
+			printRightView(root.right);
+			
+		}
+	}
 	
 }
