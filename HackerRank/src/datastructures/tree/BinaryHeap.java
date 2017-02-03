@@ -27,6 +27,15 @@ public class BinaryHeap {
 		}
 
 		beap.displayHeap();
+		
+		
+		
+		beap.delete(0);
+		
+		
+		beap.displayHeap();
+		
+		
 
 	}
 
@@ -50,26 +59,7 @@ public class BinaryHeap {
 
 		heap[heapSize++] = data;
 		heapifyUp(heapSize - 1);
-
-		/*
-		 * if(heapSize==0) { heap[0]=data; heapSize++;
-		 * 
-		 * //displayHeap();
-		 * 
-		 * } else {
-		 * 
-		 * heap[heapSize]=data; heapSize++; int childInd=heapSize-1;
-		 * 
-		 * int parent=parent(swapIter);
-		 * 
-		 * while(parent>-1 && heap[parent]<heap[swapIter] ) {
-		 * 
-		 * swap(parent,swapIter); swapIter=parent;
-		 * parent=(swapIter%2==1)?(swapIter-1)/2:(swapIter-2)/2; }
-		 * 
-		 * }
-		 */
-
+	
 	}
 
 	private void heapifyUp(int childInd) {
@@ -90,5 +80,67 @@ public class BinaryHeap {
 		heap[j] = temp;
 
 	}
+	
+	private  int kthChild(int n,int m)
+	{
+		return d*n+m;
+	}
+	
+	
+	private void delete(int ind)
+	{
+		heap[ind]=heap[heapSize-1];
+		heapSize--;
+		
+		heapifyDown(ind);
+		
+		
+	}
+	private void heapifyDown(int ind)
+	{
+		int child;
+		int tmp=heap[ind];
+		
+		while(kthChild(ind,1) <heapSize)
+		{
+			
+			child=maxChild(ind);
+			System.out.println("max child of "+heap[ind]+" is"+heap[child]);
+			
+			if(tmp< heap[child])
+			{
+				
+				swap(ind,child);
+				
+				ind=child;
+			}
+			else
+				break;
+			
+		}
+		
+		
+		
+	}
+	
+	private int maxChild(int parent)
+	{
+		
+		System.out.println("parent "+parent);
+		int lChild=kthChild(parent, 1);
+		int rChild=kthChild(parent, 2);
+		
+		displayHeap();
+		System.out.println(heap[parent]+" l child  "+heap[lChild] +" r child  "+heap[rChild] );
+		if(heap[lChild]>heap[rChild])
+			return lChild;
+		else
+			return rChild;
+		
+		
+		
+	}
+	
+	
 
 }
