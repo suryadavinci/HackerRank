@@ -12,10 +12,9 @@ public class MinMaxProblem {
 	
 	
 	
-	
-	public static void main(String[] arg)
-	{
-		
+	public static void main(String[] args) {
+
+
 		
 		 Scanner in = new Scanner(System.in);
 	        long a = in.nextLong();
@@ -44,9 +43,10 @@ public class MinMaxProblem {
 	{
 		long temp=0;
 		for(int i=0;i<array.length;i++)
-		{
-			for(int j=i+1;j<array.length;i++)
+		{System.out.println("he");
+			for(int j=i+1;j<array.length;j++)
 			{
+
 				if(array[i]>array[j])
 				{
 					
@@ -67,7 +67,9 @@ public class MinMaxProblem {
 	{
 		
 		for(long i:array)
-		System.out.print(i+" ");
+		{System.out.print(i+" ");
+
+		}
 	}
 	
 	
