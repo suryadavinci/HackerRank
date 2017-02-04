@@ -17,59 +17,49 @@ public class BinaryTree {
 	private static int minValue = 1000;
 	private static int maxValue;
 	private static int maxHeight = 0;
-	
-	
-	
-	
-	public static Node avlInsert(Node root, int val)
-	{
+
+	public static Node avlInsert(Node root, int val) {
 		Insert(root, val);
-		String avl=checkAVL(root);
-		
-		if(!avl.equals("balanced"))
-		{
-			
-			
-			
-			//System.out.println("avl of left and right "+checkAVL(root.left)+" "+checkAVL(root.right));
-			if(root.left!=null 
-					//&& !checkAVL(root.left).equals("balanced")
-					)
-				{
-				
-//				System.out.println("have to balance left sub tree "+ checkAVL(root.left));
-				
+		String avl = checkAVL(root);
+
+		if (!avl.equals("balanced")) {
+
+			// System.out.println("avl of left and right "+checkAVL(root.left)+"
+			// "+checkAVL(root.right));
+			if (root.left != null
+			// && !checkAVL(root.left).equals("balanced")
+			) {
+
+				// System.out.println("have to balance left sub tree "+
+				// checkAVL(root.left));
+
 				root.left = makeAVL(root.left, checkAVL(root.left));
 				System.out.println("Level Order After left AVL ");
 				levelOrder(root);
-				
-				}
-			if(root.right!=null 
-					//&& !checkAVL(root.right).equals("balanced")
-					)
-				{
-//				System.out.println("have to balance left sub tree"+ checkAVL(root.right));
-				root.right=makeAVL(root.right, checkAVL(root.right));
+
+			}
+			if (root.right != null
+			// && !checkAVL(root.right).equals("balanced")
+			) {
+				// System.out.println("have to balance left sub tree"+
+				// checkAVL(root.right));
+				root.right = makeAVL(root.right, checkAVL(root.right));
 				System.out.println("Level Order After left AVL ");
 				levelOrder(root);
-				
-				}
-			
-			root=makeAVL(root, checkAVL(root));
-			
-			//System.out.println(root);
-			//System.out.println(root.left);
-			//System.out.println(root.right);
-			
-			
-			
+
+			}
+
+			root = makeAVL(root, checkAVL(root));
+
+			// System.out.println(root);
+			// System.out.println(root.left);
+			// System.out.println(root.right);
+
 		}
-		
-		
+
 		return root;
-		
-		}
-	
+
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -89,97 +79,80 @@ public class BinaryTree {
 		 * 4); Insert(root, 3);
 		 */
 
-		/*lr
-		 * Insert(root, 1);
-		Insert(root, 4);
-		Insert(root, 3);
-		Insert(root, 6);
-		Insert(root, 5);
-		Insert(root, 7);*/
-		
-		//rl
-		/*Insert(root, 0);
-		Insert(root, 5);
-		Insert(root, 3);
-		Insert(root, 6);
-		Insert(root, 2);
-		Insert(root, 4);*/
-		
-		
-		for(int i=3;i<=6;i++)
-		{
-			String avl="";
+		/*
+		 * lr Insert(root, 1); Insert(root, 4); Insert(root, 3); Insert(root,
+		 * 6); Insert(root, 5); Insert(root, 7);
+		 */
+
+		// rl
+		/*
+		 * Insert(root, 0); Insert(root, 5); Insert(root, 3); Insert(root, 6);
+		 * Insert(root, 2); Insert(root, 4);
+		 */
+
+		for (int i = 3; i <= 6; i++) {
+			String avl = "";
 			Insert(root, i);
-			System.out.println("\n"+i+" inserted");
-			avl=checkAVL(root);
+			System.out.println("\n" + i + " inserted");
+			avl = checkAVL(root);
 			System.out.println("======================");
 			System.out.println("Level Order Before AVL");
 			System.out.println("======================");
 			levelOrder(root);
-			if(!avl.equals("balanced"))
-			{
-				
-				
-				
-				//System.out.println("avl of left and right "+checkAVL(root.left)+" "+checkAVL(root.right));
-				if(root.left!=null 
-						//&& !checkAVL(root.left).equals("balanced")
-						)
-					{
-					
-//					System.out.println("have to balance left sub tree "+ checkAVL(root.left));
-					
+			if (!avl.equals("balanced")) {
+
+				// System.out.println("avl of left and right
+				// "+checkAVL(root.left)+" "+checkAVL(root.right));
+				if (root.left != null
+				// && !checkAVL(root.left).equals("balanced")
+				) {
+
+					// System.out.println("have to balance left sub tree "+
+					// checkAVL(root.left));
+
 					root.left = makeAVL(root.left, checkAVL(root.left));
 					System.out.println("Level Order After left AVL ");
 					levelOrder(root);
-					
-					}
-				if(root.right!=null 
-						//&& !checkAVL(root.right).equals("balanced")
-						)
-					{
-	//				System.out.println("have to balance left sub tree"+ checkAVL(root.right));
-					root.right=makeAVL(root.right, checkAVL(root.right));
+
+				}
+				if (root.right != null
+				// && !checkAVL(root.right).equals("balanced")
+				) {
+					// System.out.println("have to balance left sub tree"+
+					// checkAVL(root.right));
+					root.right = makeAVL(root.right, checkAVL(root.right));
 					System.out.println("Level Order After left AVL ");
 					levelOrder(root);
-					
-					}
-				
-				root=makeAVL(root, checkAVL(root));
-				
-				//System.out.println(root);
-				//System.out.println(root.left);
-				//System.out.println(root.right);
-				
-				
-				
+
+				}
+
+				root = makeAVL(root, checkAVL(root));
+
+				// System.out.println(root);
+				// System.out.println(root.left);
+				// System.out.println(root.right);
+
 			}
 			System.out.println("======================");
 			System.out.println("Level Order After AVL ");
 			System.out.println("======================");
 			levelOrder(root);
-					
-			
+
 		}
-		
-		
-		
-		
-/*		
-		
-		
 
-		System.out.println();
-		System.out.println("Level Order Before");
-		levelOrder(root);
-
-		System.out.println(checkAVL(root));
-		root = makeAVL(root, checkAVL(root));
-
-		System.out.println("Level Order after avl check");
-		levelOrder(root);
-
-*/ 
+		/*
+		 * 
+		 * 
+		 * 
+		 * System.out.println(); System.out.println("Level Order Before");
+		 * levelOrder(root);
+		 * 
+		 * System.out.println(checkAVL(root)); root = makeAVL(root,
+		 * checkAVL(root));
+		 * 
+		 * System.out.println("Level Order after avl check"); levelOrder(root);
+		 * 
+		 */
 	}
 
 	static Node makeAVL(Node root, String type) {
@@ -192,7 +165,7 @@ public class BinaryTree {
 		Node d;
 
 		if (type.equals("ll")) {
-			 //System.out.println("inside ll");
+			// System.out.println("inside ll");
 			currentRoot = root;
 			newRoot = root.left;
 			c = newRoot.right;
@@ -201,7 +174,7 @@ public class BinaryTree {
 			return newRoot;
 		}
 		if (type.equals("lr")) {
-			//System.out.println("inside lr");
+			// System.out.println("inside lr");
 			currentRoot = root;
 			newRoot = root.left.right;
 			b = newRoot.left;
@@ -216,20 +189,18 @@ public class BinaryTree {
 
 		}
 
-		if(type.equals("rr"))
-		{
-			//System.out.println("inside rr");
-		currentRoot=root;
-		newRoot=root.right;
-		b=newRoot.left;
-		newRoot.left=currentRoot;
-		currentRoot.right=b;
-		return newRoot;
+		if (type.equals("rr")) {
+			// System.out.println("inside rr");
+			currentRoot = root;
+			newRoot = root.right;
+			b = newRoot.left;
+			newRoot.left = currentRoot;
+			currentRoot.right = b;
+			return newRoot;
 		}
-		
-		
+
 		if (type.equals("rl")) {
-			//System.out.println("inside rl");
+			// System.out.println("inside rl");
 			currentRoot = root;
 			newRoot = root.right.left;
 			b = newRoot.left;
@@ -243,7 +214,7 @@ public class BinaryTree {
 			return newRoot;
 
 		}
-		
+
 		return source;
 
 	}
@@ -255,11 +226,11 @@ public class BinaryTree {
 		int lHeight = height(root.left) + 1;
 		int rHeight = height(root.right) + 1;
 		System.out.println();
-		 //System.out.println("left Height " + lHeight);
-		 //System.out.println("right Height " + rHeight);
-		 System.out.println(lHeight - rHeight);
+		// System.out.println("left Height " + lHeight);
+		// System.out.println("right Height " + rHeight);
+		System.out.println(lHeight - rHeight);
 		if (lHeight - rHeight > 1) {
-			 //System.out.println("inside Left Height check");
+			// System.out.println("inside Left Height check");
 			for (int i = 0; i <= lHeight; i++) {
 				if (root.left != null)
 					root = root.left;
@@ -270,16 +241,16 @@ public class BinaryTree {
 			}
 		} else if (lHeight - rHeight < -1) {
 			root = source;
-			 //System.out.println("inside right Height check");
+			// System.out.println("inside right Height check");
 			for (int i = 0; i <= rHeight; i++) {
 
 				if (root.right != null) {
-					// System.out.println("printing root data i: " + i + "  "+
+					// System.out.println("printing root data i: " + i + " "+
 					// root.data + " " + root.right);
 					root = root.right;
 
 				} else if (root.right == null && i == rHeight) {
-					 //System.out.println("root.right is null " + i + " "+
+					// System.out.println("root.right is null " + i + " "+
 					// rHeight);
 					return "rr";
 				} else
@@ -565,14 +536,12 @@ public class BinaryTree {
 
 	static Node Insert(Node root, int value) {
 		Node source = root;
-		
-		if(root==null)
-		{
-			root=new Node();
-			root.data=value;
+
+		if (root == null) {
+			root = new Node();
+			root.data = value;
 			return root;
 		}
-		
 
 		if (root.data <= value) {
 			insertRight(root, value);

@@ -27,27 +27,20 @@ public class BinaryHeap {
 		}
 
 		beap.displayHeap();
-		
-		
-		
+
 		beap.delete(0);
-		
-		
+
 		beap.displayHeap();
-		
-		
 
 	}
 
 	private void displayHeap() {
 
-		System.out
-				.println("====================================================");
+		System.out.println("====================================================");
 		for (int i = 0; i < heapSize; i++)
 			System.out.print(heap[i] + " | ");
 		System.out.println();
-		System.out
-				.println("====================================================");
+		System.out.println("====================================================");
 
 	}
 
@@ -59,7 +52,7 @@ public class BinaryHeap {
 
 		heap[heapSize++] = data;
 		heapifyUp(heapSize - 1);
-	
+
 	}
 
 	private void heapifyUp(int childInd) {
@@ -80,67 +73,53 @@ public class BinaryHeap {
 		heap[j] = temp;
 
 	}
-	
-	private  int kthChild(int n,int m)
-	{
-		return d*n+m;
+
+	private int kthChild(int n, int m) {
+		return d * n + m;
 	}
-	
-	
-	private void delete(int ind)
-	{
-		heap[ind]=heap[heapSize-1];
+
+	private void delete(int ind) {
+		heap[ind] = heap[heapSize - 1];
 		heapSize--;
-		
+
 		heapifyDown(ind);
-		
-		
+
 	}
-	private void heapifyDown(int ind)
-	{
+
+	private void heapifyDown(int ind) {
 		int child;
-		int tmp=heap[ind];
-		
-		while(kthChild(ind,1) <heapSize)
-		{
-			
-			child=maxChild(ind);
-			System.out.println("max child of "+heap[ind]+" is"+heap[child]);
-			
-			if(tmp< heap[child])
-			{
-				
-				swap(ind,child);
-				
-				ind=child;
-			}
-			else
+		int tmp = heap[ind];
+
+		while (kthChild(ind, 1) < heapSize) {
+
+			child = maxChild(ind);
+			System.out.println("max child of " + heap[ind] + " is" + heap[child]);
+
+			if (tmp < heap[child]) {
+
+				swap(ind, child);
+
+				ind = child;
+			} else
 				break;
-			
+
 		}
-		
-		
-		
+
 	}
-	
-	private int maxChild(int parent)
-	{
-		
-		System.out.println("parent "+parent);
-		int lChild=kthChild(parent, 1);
-		int rChild=kthChild(parent, 2);
-		
+
+	private int maxChild(int parent) {
+
+		System.out.println("parent " + parent);
+		int lChild = kthChild(parent, 1);
+		int rChild = kthChild(parent, 2);
+
 		displayHeap();
-		System.out.println(heap[parent]+" l child  "+heap[lChild] +" r child  "+heap[rChild] );
-		if(heap[lChild]>heap[rChild])
+		System.out.println(heap[parent] + " l child  " + heap[lChild] + " r child  " + heap[rChild]);
+		if (heap[lChild] > heap[rChild])
 			return lChild;
 		else
 			return rChild;
-		
-		
-		
+
 	}
-	
-	
 
 }

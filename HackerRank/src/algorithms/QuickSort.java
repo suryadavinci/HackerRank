@@ -46,16 +46,13 @@ public class QuickSort {
 
 			int pivot = theArray[right];
 
-			System.out.println("Value in right " + theArray[right]
-					+ " is made the pivot");
+			System.out.println("Value in right " + theArray[right] + " is made the pivot");
 
-			System.out.println("left = " + left + " right= " + right
-					+ " pivot= " + pivot + " sent to be partitioned");
+			System.out.println("left = " + left + " right= " + right + " pivot= " + pivot + " sent to be partitioned");
 
 			int pivotLocation = partitionArray(left, right, pivot);
 
-			System.out.println("Value in left " + theArray[left]
-					+ " is made the pivot");
+			System.out.println("Value in left " + theArray[left] + " is made the pivot");
 
 			quickSort(left, pivotLocation - 1); // Sorts the left side
 
@@ -78,17 +75,16 @@ public class QuickSort {
 
 			printHorzArray(leftPointer, rightPointer);
 
-			System.out.println(theArray[leftPointer] + " in index "
-					+ leftPointer + " is bigger than the pivot value " + pivot);
+			System.out.println(
+					theArray[leftPointer] + " in index " + leftPointer + " is bigger than the pivot value " + pivot);
 
 			while (rightPointer > 0 && theArray[--rightPointer] > pivot)
 				;
 
 			printHorzArray(leftPointer, rightPointer);
 
-			System.out.println(theArray[rightPointer] + " in index "
-					+ rightPointer + " is smaller than the pivot value "
-					+ pivot);
+			System.out.println(
+					theArray[rightPointer] + " in index " + rightPointer + " is smaller than the pivot value " + pivot);
 
 			printHorzArray(leftPointer, rightPointer);
 
@@ -104,8 +100,7 @@ public class QuickSort {
 
 				swapValues(leftPointer, rightPointer);
 
-				System.out.println(theArray[leftPointer] + " was swapped for "
-						+ theArray[rightPointer]);
+				System.out.println(theArray[leftPointer] + " was swapped for " + theArray[rightPointer]);
 
 			}
 

@@ -16,12 +16,12 @@ public class LinkedList {
 		Node head1 = l.linkFirst(null, 1);
 		head1 = l.linkLast(head1, 3);
 		head1 = l.linkLast(head1, 5);
-		//head1 = l.linkLast(head1, 6);
+		// head1 = l.linkLast(head1, 6);
 
 		Node head2 = l.linkFirst(null, 2);
 		head2 = l.linkLast(head2, 4);
-		//head2 = l.linkLast(head2, 4);
-		//head2 = l.linkLast(head2, 8);
+		// head2 = l.linkLast(head2, 4);
+		// head2 = l.linkLast(head2, 8);
 
 		Node headSorted = null;
 
@@ -31,7 +31,6 @@ public class LinkedList {
 
 		System.out.println("sorted 0" + LinkedList.toString(headSorted));
 
-		
 	}
 
 	public static String toString(Node head) {
@@ -277,25 +276,21 @@ public class LinkedList {
 				break;
 			}
 
-			System.out.println("Comparing "+l1.data+" "+l2.data );
+			System.out.println("Comparing " + l1.data + " " + l2.data);
 			if (l1.data < l2.data || l1.data == l2.data) {
 				l1Prev = l1;
 				l1 = l1.next;
 				System.out.println("what happens here");
-				if(l2.next==null)
-					{
-					l1.next=l2;
+				if (l2.next == null) {
+					l1.next = l2;
 					break;
-					}
-				
-				if(l1.next==null)
-				{
-				l1.next=l2;
-				break;
 				}
-				
-				
-				
+
+				if (l1.next == null) {
+					l1.next = l2;
+					break;
+				}
+
 			} else if (l1.data > l2.data) {
 				System.out.println("what happens second");
 				temp = l2.next;
@@ -313,88 +308,45 @@ public class LinkedList {
 
 			}
 
-			//System.out.println(LinkedList.toString(headA));
+			// System.out.println(LinkedList.toString(headA));
 
 		}
 
 		return headA;
 
 	}
-	
-	
+
 	Node mergeLists2(Node headA, Node headB) {
 
-		Node l1=headA;
-		Node l2=headB;
-		Node temp=null;
-		
-		Node l1Prev=null;
-		Node head=headA;
-		
-		
-			while(l2!=null)
-			{
-				if(l1.data>l2.data)
-				{	
-					temp=l2.next;
-					if(l1Prev==null)
-					{
-						l1Prev=l2;
-						head=l2;
-					}
-					else
-					{
-						l1Prev.next=l2;
-					}
-					
-					l2.next=l1;
-					l2=temp;
-					
+		Node l1 = headA;
+		Node l2 = headB;
+		Node temp = null;
+
+		Node l1Prev = null;
+		Node head = headA;
+
+		while (l2 != null) {
+			if (l1.data > l2.data) {
+				temp = l2.next;
+				if (l1Prev == null) {
+					l1Prev = l2;
+					head = l2;
+				} else {
+					l1Prev.next = l2;
 				}
-				else if(l1.data<l2.data)
-				{
-					l1=l1.next;
-					
-				}
-				
-				
-				
-				
+
+				l2.next = l1;
+				l2 = temp;
+
+			} else if (l1.data < l2.data) {
+				l1 = l1.next;
+
 			}
-			
-		
+
+		}
+
 		return headB;
-	
-}
 
-
-
-
-
-
-
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
