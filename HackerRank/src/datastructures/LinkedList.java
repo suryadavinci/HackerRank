@@ -7,31 +7,96 @@ class Node {
 
 public class LinkedList {
 
+	private Node head;
 	public static void main(String[] args) {
 
-		LinkedList l = new LinkedList();
+		LinkedList a = new LinkedList();
 
-		// head=l.linkFirst(null, 2);
+		LinkedList b = new LinkedList();
 
-		Node head1 = l.linkFirst(null, 1);
-		head1 = l.linkLast(head1, 3);
-		head1 = l.linkLast(head1, 5);
-		// head1 = l.linkLast(head1, 6);
+		a.linkLast(1);
+		a.linkLast(3);
+		a.linkLast(5);
+		a.linkLast(6);
+		
 
-		Node head2 = l.linkFirst(null, 2);
-		head2 = l.linkLast(head2, 4);
-		// head2 = l.linkLast(head2, 4);
-		// head2 = l.linkLast(head2, 8);
+		b.linkLast(2);
+		b.linkLast(4);
+		b.linkLast(7);
 
-		Node headSorted = null;
+		Node output=mergeLists(a.head,b.head);
+		
+		
+		a.linkNth(100, 2);
+		
+		System.out.println("sorted 0" + LinkedList.toString(output));
 
-		// Node headSorted=l.mergeLists(head1, head2);
+		System.out.println(LinkedList.toString(a.head));
+		a.delete(0);
 
-		headSorted = l.mergeLists(head1, head2);
+		System.out.println(LinkedList.toString(a.head));
+		
+		a.linkFirst(0);
 
-		System.out.println("sorted 0" + LinkedList.toString(headSorted));
+		System.out.println(LinkedList.toString(a.head));
+}
 
-	}
+	
+	
+	
+	
+	
+
+static Node mergeLists(Node headA, Node headB) {
+    // This is a "method-only" submission. 
+    // You only need to complete this method 
+   
+   Node output = new Node();
+   Node temp=output;
+   while(headA!=null || headB!=null)
+   {
+     //  System.out.println("Comparing headA vs headB "+headA.data+" "+headB.data );
+       if((headB==null ) || ( headA!=null && headA.data<=headB.data))
+           {
+           //System.out.println("headA is low "+headA.data+" "+headB.data  );
+           temp.data=headA.data;
+           headA=headA.next;
+           //printList(output);
+       }
+       else 
+       {
+           //System.out.println("headB is low "+headA.data+" "+headB.data );
+           temp.data=headB.data;
+           headB=headB.next;
+           //printList(output);
+       }
+       if(headA!=null || headB!=null)
+       temp.next=new Node();
+           temp=temp.next;
+       //printList(output);
+         
+   }
+   
+     
+   
+   //printList(output);
+   return output;
+
+
+}
+
+static void printList(Node root)
+    
+    {
+    System.out.println("Output Data");
+    if(root!=null)
+        {
+        
+        System.out.print(root.data+" ");
+        root=root.next;
+    }
+    System.out.println();
+}
 
 	public static String toString(Node head) {
 
@@ -48,7 +113,7 @@ public class LinkedList {
 	}
 
 	// Insert renamed to LinkLast
-	Node linkLast(Node head, int data) {
+	Node linkLast( int data) {
 		// This is a "method-only" submission.
 		// You only need to complete this method.
 		/*
@@ -56,6 +121,7 @@ public class LinkedList {
 		 * NULL as well for empty list Node is defined as
 		 */
 
+		//Node head=this.head;
 		Node tempHead = head;
 		if (head == null) {
 			head = new Node();
@@ -73,12 +139,14 @@ public class LinkedList {
 		head.next = new Node();
 		head.next.data = data;
 		head.next.next = null;
-
+		this.head=tempHead;
 		return tempHead;
 
 	}
 
-	Node linkFirst(Node head, int x) {
+	Node linkFirst( int x) {
+
+		//Node head=this.head;
 
 		Node tempHead = head;
 
@@ -92,14 +160,15 @@ public class LinkedList {
 		head = new Node();
 		head.next = tempHead;
 		head.data = x;
-
+		this.head=head;
 		return head;
 
 	}
 
-	Node linkNth(Node head, int data, int position) {
+	Node linkNth( int data, int position) {
 		// This is a "method-only" submission.
 		// You only need to complete this method.
+
 
 		Node tempHead = head;
 		if (head == null) {
@@ -129,33 +198,33 @@ public class LinkedList {
 			head.next = current;
 			return head;
 		}
-
+		this.head=tempHead;
 		return tempHead;
 
 	}
 
-	Node delete(Node head, int position) {
+	void delete( int position) {
 		// Complete this method
-		Node tempHead = head;
+		Node tempHead=head;
 
 		if (position == 0) {
-			tempHead = head.next;
-			head = null;
-			return tempHead;
+				
+			head =  head.next;
+			return;
 		}
 
 		for (int i = 0; i < position - 1; i++)
-			head = head.next;
+			tempHead = tempHead.next;
 
-		head.next = head.next.next;
+		tempHead.next = tempHead.next.next;
 
-		return tempHead;
 
 	}
 
-	void reversePrint(Node head) {
+	void reversePrint() {
 		// This is a "method-only" submission.
 		// You only need to complete this method.
+		Node head=this.head;
 		Node tempHead = head;
 		int count = 0;
 		while (head != null) {
@@ -176,8 +245,9 @@ public class LinkedList {
 
 	}
 
-	Node reverse(Node head) {
+	Node reverse() {
 
+		Node head=this.head;
 		Node tempHead = head;
 
 		int count = 0;
@@ -242,111 +312,6 @@ public class LinkedList {
 		return 1;
 
 	}
-
-	Node mergeLists(Node headA, Node headB) {
-
-		// This is a "method-only" submission.
-		// You only need to complete this method
-		Node l1Head = headA;
-		Node l1 = headA;
-		Node l2 = headB;
-
-		Node l1Prev = null;
-		Node temp = null;
-
-		if (l1 == null) {
-			l1 = l2;
-			return l1;
-		}
-		if (l2 == null) {
-
-			// l1.next=l2;
-			return l1;
-		}
-
-		while (l1 != null || l2 != null) {
-
-			if (l1 == null) {
-				l1 = l2;
-				break;
-			}
-			if (l2 == null) {
-
-				// l1.next=l2;
-				break;
-			}
-
-			System.out.println("Comparing " + l1.data + " " + l2.data);
-			if (l1.data < l2.data || l1.data == l2.data) {
-				l1Prev = l1;
-				l1 = l1.next;
-				System.out.println("what happens here");
-				if (l2.next == null) {
-					l1.next = l2;
-					break;
-				}
-
-				if (l1.next == null) {
-					l1.next = l2;
-					break;
-				}
-
-			} else if (l1.data > l2.data) {
-				System.out.println("what happens second");
-				temp = l2.next;
-				if (l1Prev != null) {
-					l1Prev.next = l2;
-
-				} else {
-					headA = l2;
-
-				}
-
-				l1Prev = l2;
-				l2.next = l1;
-				l2 = temp;
-
-			}
-
-			// System.out.println(LinkedList.toString(headA));
-
-		}
-
-		return headA;
-
-	}
-
-	Node mergeLists2(Node headA, Node headB) {
-
-		Node l1 = headA;
-		Node l2 = headB;
-		Node temp = null;
-
-		Node l1Prev = null;
-		Node head = headA;
-
-		while (l2 != null) {
-			if (l1.data > l2.data) {
-				temp = l2.next;
-				if (l1Prev == null) {
-					l1Prev = l2;
-					head = l2;
-				} else {
-					l1Prev.next = l2;
-				}
-
-				l2.next = l1;
-				l2 = temp;
-
-			} else if (l1.data < l2.data) {
-				l1 = l1.next;
-
-			}
-
-		}
-
-		return headB;
-
-	}
-
 }
+
+	
