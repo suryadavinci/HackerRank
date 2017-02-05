@@ -8,6 +8,7 @@ class Node {
 public class LinkedList {
 
 	private Node head;
+
 	public static void main(String[] args) {
 
 		LinkedList a = new LinkedList();
@@ -18,85 +19,72 @@ public class LinkedList {
 		a.linkLast(3);
 		a.linkLast(5);
 		a.linkLast(6);
-		
 
 		b.linkLast(2);
 		b.linkLast(4);
 		b.linkLast(7);
 
-		Node output=mergeLists(a.head,b.head);
-		
-		
+		Node output = mergeLists(a.head, b.head);
+
 		a.linkNth(100, 2);
-		
+
 		System.out.println("sorted 0" + LinkedList.toString(output));
 
 		System.out.println(LinkedList.toString(a.head));
 		a.delete(0);
 
 		System.out.println(LinkedList.toString(a.head));
-		
+
 		a.linkFirst(0);
 
 		System.out.println(LinkedList.toString(a.head));
-}
+	}
 
-	
-	
-	
-	
-	
+	static Node mergeLists(Node headA, Node headB) {
+		// This is a "method-only" submission.
+		// You only need to complete this method
 
-static Node mergeLists(Node headA, Node headB) {
-    // This is a "method-only" submission. 
-    // You only need to complete this method 
-   
-   Node output = new Node();
-   Node temp=output;
-   while(headA!=null || headB!=null)
-   {
-     //  System.out.println("Comparing headA vs headB "+headA.data+" "+headB.data );
-       if((headB==null ) || ( headA!=null && headA.data<=headB.data))
-           {
-           //System.out.println("headA is low "+headA.data+" "+headB.data  );
-           temp.data=headA.data;
-           headA=headA.next;
-           //printList(output);
-       }
-       else 
-       {
-           //System.out.println("headB is low "+headA.data+" "+headB.data );
-           temp.data=headB.data;
-           headB=headB.next;
-           //printList(output);
-       }
-       if(headA!=null || headB!=null)
-       temp.next=new Node();
-           temp=temp.next;
-       //printList(output);
-         
-   }
-   
-     
-   
-   //printList(output);
-   return output;
+		Node output = new Node();
+		Node temp = output;
+		while (headA != null || headB != null) {
+			// System.out.println("Comparing headA vs headB "+headA.data+"
+			// "+headB.data );
+			if ((headB == null) || (headA != null && headA.data <= headB.data)) {
+				// System.out.println("headA is low "+headA.data+" "+headB.data
+				// );
+				temp.data = headA.data;
+				headA = headA.next;
+				// printList(output);
+			} else {
+				// System.out.println("headB is low "+headA.data+" "+headB.data
+				// );
+				temp.data = headB.data;
+				headB = headB.next;
+				// printList(output);
+			}
+			if (headA != null || headB != null)
+				temp.next = new Node();
+			temp = temp.next;
+			// printList(output);
 
+		}
 
-}
+		// printList(output);
+		return output;
 
-static void printList(Node root)
-    
-    {
-    System.out.println("Output Data");
-    if(root!=null)
-        {
-        
-        System.out.print(root.data+" ");
-        root=root.next;
-    }
-    System.out.println();
-}
+	}
+
+	static void printList(Node root)
+
+	{
+		System.out.println("Output Data");
+		if (root != null) {
+
+			System.out.print(root.data + " ");
+			root = root.next;
+		}
+		System.out.println();
+	}
 
 	public static String toString(Node head) {
 
@@ -113,7 +101,7 @@ static void printList(Node root)
 	}
 
 	// Insert renamed to LinkLast
-	Node linkLast( int data) {
+	Node linkLast(int data) {
 		// This is a "method-only" submission.
 		// You only need to complete this method.
 		/*
@@ -121,7 +109,7 @@ static void printList(Node root)
 		 * NULL as well for empty list Node is defined as
 		 */
 
-		//Node head=this.head;
+		// Node head=this.head;
 		Node tempHead = head;
 		if (head == null) {
 			head = new Node();
@@ -139,14 +127,14 @@ static void printList(Node root)
 		head.next = new Node();
 		head.next.data = data;
 		head.next.next = null;
-		this.head=tempHead;
+		this.head = tempHead;
 		return tempHead;
 
 	}
 
-	Node linkFirst( int x) {
+	Node linkFirst(int x) {
 
-		//Node head=this.head;
+		// Node head=this.head;
 
 		Node tempHead = head;
 
@@ -160,15 +148,14 @@ static void printList(Node root)
 		head = new Node();
 		head.next = tempHead;
 		head.data = x;
-		this.head=head;
+		this.head = head;
 		return head;
 
 	}
 
-	Node linkNth( int data, int position) {
+	Node linkNth(int data, int position) {
 		// This is a "method-only" submission.
 		// You only need to complete this method.
-
 
 		Node tempHead = head;
 		if (head == null) {
@@ -198,18 +185,18 @@ static void printList(Node root)
 			head.next = current;
 			return head;
 		}
-		this.head=tempHead;
+		this.head = tempHead;
 		return tempHead;
 
 	}
 
-	void delete( int position) {
+	void delete(int position) {
 		// Complete this method
-		Node tempHead=head;
+		Node tempHead = head;
 
 		if (position == 0) {
-				
-			head =  head.next;
+
+			head = head.next;
 			return;
 		}
 
@@ -218,13 +205,12 @@ static void printList(Node root)
 
 		tempHead.next = tempHead.next.next;
 
-
 	}
 
 	void reversePrint() {
 		// This is a "method-only" submission.
 		// You only need to complete this method.
-		Node head=this.head;
+		Node head = this.head;
 		Node tempHead = head;
 		int count = 0;
 		while (head != null) {
@@ -247,7 +233,7 @@ static void printList(Node root)
 
 	Node reverse() {
 
-		Node head=this.head;
+		Node head = this.head;
 		Node tempHead = head;
 
 		int count = 0;
@@ -313,5 +299,3 @@ static void printList(Node root)
 
 	}
 }
-
-	
