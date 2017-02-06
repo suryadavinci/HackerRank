@@ -17,9 +17,7 @@ public class FreshBinaryTree {
 		for (int i = 0; i < 15; i++)
 			BinaryTree.Insert(root, (int) (Math.random() * 50));
 
-		printOrder(root, "p1");
-		printOrder(root, "p2");
-		printOrder(root, "i");
+
 		printOrder(root, "l");
 
 		topView(root);
@@ -27,6 +25,21 @@ public class FreshBinaryTree {
 
 		// levelOrder(root);
 
+	}
+	
+	
+	
+	public static void findBinarySum(Node root, int sum)
+	{
+		int internalSum=0;
+		if(internalSum==sum)
+			System.out.println("Sum Found");
+		if(root!=null)
+		{
+			//internalSum=findBinarySum(root.left, internalSum);
+			
+			
+		}
 	}
 
 	public static void preOrder(Node root) {
