@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class BinaryHeap {
 
-	static BinaryHeap beap;
+	//static BinaryHeap beap;
 
 	private int d = 2;
 	private int[] heap;
@@ -19,7 +19,7 @@ public class BinaryHeap {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		beap = new BinaryHeap(30);
+		BinaryHeap beap = new BinaryHeap(30);
 
 		for (int i = 1; i < 8; i++) {
 			beap.insert(i);
