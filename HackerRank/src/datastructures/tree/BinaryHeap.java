@@ -1,6 +1,7 @@
 package datastructures.tree;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class BinaryHeap {
 
@@ -21,17 +22,41 @@ public class BinaryHeap {
 
 		BinaryHeap beap = new BinaryHeap(30);
 
-		for (int i = 1; i < 8; i++) {
-			beap.insert(i);
-			beap.displayHeap();
+		Scanner s= new Scanner(System.in);
+		int queries=s.nextInt();
+		int oper=0;
+		for(int i=0;i<queries;i++){
+			oper=s.nextInt();
+			if(oper==1)
+			{
+				beap.insert(s.nextInt());
+			}
+			else if(oper==2)
+			{
+				beap.deleteElement(s.nextInt());
+			}
+			else if(oper==3){
+				beap.getMinimum();
+			}
 		}
-
+		
+		
+		
 			
 		beap.levelOrder();
 
 	}
 
-	
+	void getMinimum(){
+		int minimum=heap[heapSize-1];
+		for(int i=0;i<heapSize-1;i++)
+		{
+			if(heap[i]<minimum)
+				minimum=heap[i];
+			
+		}
+		System.out.println(minimum);
+	}
 	private void levelOrder() {
 		int newLevel=0;
 		int i=0;
@@ -91,6 +116,19 @@ public class BinaryHeap {
 		return d * n + m;
 	}
 
+	private void deleteElement(int value) {
+		int ind=0;
+		for( ind=0;ind<heapSize;ind++)
+		{
+			if(heap[ind]==value){
+				break;
+			}
+		}
+		
+
+		delete(ind);
+
+	}
 	private void delete(int ind) {
 		heap[ind] = heap[heapSize - 1];
 		heapSize--;
