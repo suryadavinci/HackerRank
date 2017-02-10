@@ -17,13 +17,12 @@ public class HackerRankInAString {
 
 			h = 0;
 			for (int i = 0; i < s.length(); i++) {
-				
-				if(h==10)
+
+				if (h == 10)
 					break;
 				if (s.charAt(i) == c[h]) {
 					h++;
 				}
-				
 
 			}
 
