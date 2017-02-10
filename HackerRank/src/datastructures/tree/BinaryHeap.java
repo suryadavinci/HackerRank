@@ -34,6 +34,18 @@ public class BinaryHeap {
 
 	}
 
+	
+	private void levelOrder() {
+		int newLevel=0;
+		int i=0;
+		System.out.print(heap[i]+" "); 
+		while(i<heapSize){
+			newLevel=i*2+2;
+			System.out.println();
+		}
+			i++;
+	}
+	
 	private void displayHeap() {
 
 		System.out.println("====================================================");
