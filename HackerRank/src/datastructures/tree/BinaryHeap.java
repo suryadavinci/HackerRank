@@ -43,7 +43,7 @@ public class BinaryHeap {
 		
 		
 			
-		beap.levelOrder();
+		//beap.levelOrder();
 
 	}
 
