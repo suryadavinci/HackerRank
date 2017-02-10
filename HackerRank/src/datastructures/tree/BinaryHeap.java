@@ -26,14 +26,27 @@ public class BinaryHeap {
 			beap.displayHeap();
 		}
 
-		beap.displayHeap();
-
-		beap.delete(0);
-
-		beap.displayHeap();
+			
+		beap.levelOrder();
 
 	}
 
+	
+	private void levelOrder() {
+		int newLevel=0;
+		int i=0;
+		 
+		while(i<heapSize){
+			System.out.print(heap[i]+" ");
+			if(i==newLevel){
+			newLevel=i*2+2;
+			System.out.println();
+			}
+			i++;
+
+		}
+	}
+	
 	private void displayHeap() {
 
 		System.out.println("====================================================");
