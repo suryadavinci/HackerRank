@@ -26,11 +26,8 @@ public class BinaryHeap {
 			beap.displayHeap();
 		}
 
-		beap.displayHeap();
-
-		beap.delete(0);
-
-		beap.displayHeap();
+			
+		beap.levelOrder();
 
 	}
 
@@ -38,12 +35,16 @@ public class BinaryHeap {
 	private void levelOrder() {
 		int newLevel=0;
 		int i=0;
-		System.out.print(heap[i]+" "); 
+		 
 		while(i<heapSize){
+			System.out.print(heap[i]+" ");
+			if(i==newLevel){
 			newLevel=i*2+2;
 			System.out.println();
-		}
+			}
 			i++;
+
+		}
 	}
 	
 	private void displayHeap() {
