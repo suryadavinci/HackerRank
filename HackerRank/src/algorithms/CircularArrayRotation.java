@@ -13,7 +13,13 @@ public class CircularArrayRotation {
 		for (int a_i = 0; a_i < n; a_i++) {
 			a[a_i] = in.nextInt();
 		}
-		rotate(a, k);
+		// System.out.println(n+" "+k+" "+(n-k));
+		k = k % n;
+		if ((n - k) > k)
+			rotate(a, k);
+		else
+			rotateLeft(a, n - k);
+
 		for (int a0 = 0; a0 < q; a0++) {
 			int m = in.nextInt();
 
@@ -40,10 +46,20 @@ public class CircularArrayRotation {
 
 	}
 
-	public static void disp(int[] a) {
+	public static void rotateLeft(int[] a, int rotate) {
+		int temp = 0;
 
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
+		for (int j = 0; j < rotate; j++) {
+			temp = a[0];
+			// System.out.println(temp);
+
+			for (int i = 0; i < a.length - 1; i++) {
+				a[i] = a[i + 1];
+
+			}
+
+			a[a.length - 1] = temp;
+
 		}
 
 	}
