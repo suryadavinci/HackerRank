@@ -20,7 +20,7 @@ public class Stack<E> {
 		int t = in.nextInt();
 		for (int a0 = 0; a0 < t; a0++) {
 			String s = in.next();
-
+			balancedBracket=new Stack<Character>(100000);
 			balancedBracket.bracketOperations(s);
 
 		}
@@ -30,10 +30,17 @@ public class Stack<E> {
 	public void bracketOperations(String s) {
 		int length = s.length();
 		Character c;
+		Character ithChar=s.charAt(length-1);
+		if(ithChar == '{' || ithChar == '[' || ithChar == '(')
+		{
+			System.out.println("NO");
+			return;
+		}
+		
 		for (int i = 0; i < length; i++) {
 
-			Character ithChar = s.charAt(i);
-
+			ithChar = s.charAt(i);
+			
 			if (ithChar == '{' || ithChar == '[' || ithChar == '(') {
 				c = s.charAt(i);
 				this.push((E) c);
