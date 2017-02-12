@@ -26,6 +26,7 @@ public class Stack<E> {
 		}
 
 	}
+	
 
 	public void bracketOperations(String s) {
 		int length = s.length();
