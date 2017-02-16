@@ -32,6 +32,7 @@ public class Pairs {
 		String next = in.nextLine();
 		String[] next_split = next.split(" ");
 
+		
 		for (int _a_i = 0; _a_i < _a_size; _a_i++) {
 			_a_item = Integer.parseInt(next_split[_a_i]);
 			_a[_a_i] = _a_item;
