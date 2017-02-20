@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ProjectEuler67MaximumPathSumII {
+public class Problem67MaximumPathSumII {
 
 	static int[][] a;
 	static int[][] mem;
