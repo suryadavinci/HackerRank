@@ -2,14 +2,14 @@ package challenges.projecteuler;
 
 import java.math.BigInteger;
 
-public class NumbersWithFewRepeatedDigits {
+public class Problem172NumbersWithFewRepeatedDigits {
 
 	int totalCount = 0;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		NumbersWithFewRepeatedDigits solution = new NumbersWithFewRepeatedDigits();
+		Problem172NumbersWithFewRepeatedDigits solution = new Problem172NumbersWithFewRepeatedDigits();
 
 		solution.numbersWithFewRepeatedDigits(4, 3);
 

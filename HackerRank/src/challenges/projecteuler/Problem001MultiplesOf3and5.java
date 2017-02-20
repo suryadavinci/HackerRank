@@ -2,7 +2,7 @@ package challenges.projecteuler;
 
 import java.util.Scanner;
 
-public class MultiplesOf3and5 {
+public class Problem001MultiplesOf3and5 {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
