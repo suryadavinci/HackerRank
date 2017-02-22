@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class BinaryHeap {
 
-	//static BinaryHeap beap;
+	// static BinaryHeap beap;
 
 	private int d = 2;
 	private int[] heap;
@@ -22,56 +22,49 @@ public class BinaryHeap {
 
 		BinaryHeap beap = new BinaryHeap(30);
 
-		Scanner s= new Scanner(System.in);
-		int queries=s.nextInt();
-		int oper=0;
-		for(int i=0;i<queries;i++){
-			oper=s.nextInt();
-			if(oper==1)
-			{
+		Scanner s = new Scanner(System.in);
+		int queries = s.nextInt();
+		int oper = 0;
+		for (int i = 0; i < queries; i++) {
+			oper = s.nextInt();
+			if (oper == 1) {
 				beap.insert(s.nextInt());
-			}
-			else if(oper==2)
-			{
+			} else if (oper == 2) {
 				beap.deleteElement(s.nextInt());
-			}
-			else if(oper==3){
+			} else if (oper == 3) {
 				beap.getMinimum();
 			}
 		}
-		
-		
-		
-			
-		//beap.levelOrder();
+
+		// beap.levelOrder();
 
 	}
 
-	void getMinimum(){
-		int minimum=heap[heapSize-1];
-		for(int i=0;i<heapSize-1;i++)
-		{
-			if(heap[i]<minimum)
-				minimum=heap[i];
-			
+	void getMinimum() {
+		int minimum = heap[heapSize - 1];
+		for (int i = 0; i < heapSize - 1; i++) {
+			if (heap[i] < minimum)
+				minimum = heap[i];
+
 		}
 		System.out.println(minimum);
 	}
+
 	private void levelOrder() {
-		int newLevel=0;
-		int i=0;
-		 
-		while(i<heapSize){
-			System.out.print(heap[i]+" ");
-			if(i==newLevel){
-			newLevel=i*2+2;
-			System.out.println();
+		int newLevel = 0;
+		int i = 0;
+
+		while (i < heapSize) {
+			System.out.print(heap[i] + " ");
+			if (i == newLevel) {
+				newLevel = i * 2 + 2;
+				System.out.println();
 			}
 			i++;
 
 		}
 	}
-	
+
 	private void displayHeap() {
 
 		System.out.println("====================================================");
@@ -117,18 +110,17 @@ public class BinaryHeap {
 	}
 
 	private void deleteElement(int value) {
-		int ind=0;
-		for( ind=0;ind<heapSize;ind++)
-		{
-			if(heap[ind]==value){
+		int ind = 0;
+		for (ind = 0; ind < heapSize; ind++) {
+			if (heap[ind] == value) {
 				break;
 			}
 		}
-		
 
 		delete(ind);
 
 	}
+
 	private void delete(int ind) {
 		heap[ind] = heap[heapSize - 1];
 		heapSize--;
