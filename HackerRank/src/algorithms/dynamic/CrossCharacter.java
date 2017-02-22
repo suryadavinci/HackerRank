@@ -19,7 +19,7 @@ public class CrossCharacter {
 		 size=input.length();
 		
 		for(int i=0;i<size;i++){
-			System.out.print(printNthString(i));
+			System.out.println(printNthString(i));
 		}
 		
 		}
