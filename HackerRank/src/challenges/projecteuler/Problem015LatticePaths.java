@@ -16,7 +16,7 @@ public class Problem015LatticePaths {
         System.out.println(up.totalPaths(0, 0));
         }
 		
-		
+		s.close();
 	}
 
 }
