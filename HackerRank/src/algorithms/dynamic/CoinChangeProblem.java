@@ -53,14 +53,14 @@ public class CoinChangeProblem {
 				if(j*a==sum){
 					x.put(a, j);
 					count++;
-					//System.out.println("FOUND "+x);
+					System.out.println("FOUND "+x);
 					x.remove(a);
 				}
 				else if(j*a>sum){
 					break;
 				}else{
 				//	op=op+""+a+"x"+j+" + ";
-					System.out.println(sum+" "+x);
+					//System.out.println(sum+" "+x);
 					x.put(a, j);
 
 					getCoinChange(sum-a*j, Arrays.copyOfRange(sub, 1,sub.length ),x);
