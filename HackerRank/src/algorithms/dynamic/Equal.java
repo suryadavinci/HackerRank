@@ -9,6 +9,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 
+
 public class Equal {
 
 	static int[] a;
