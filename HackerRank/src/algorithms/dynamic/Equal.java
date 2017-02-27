@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -19,15 +20,32 @@ public class Equal {
 	
 	static TreeSet<Integer> set= new TreeSet<Integer>();
 	public static void main(String[] args) {
+        
+        Scanner s= new Scanner(System.in);
+        int t=s.nextInt();
+        int n;
+        for(int i=0;i<t;i++){
+            n=s.nextInt();
+            a= new int[n];
+
+            for(int j=0;j<n;j++){
+                
+                a[j]=s.nextInt();
+                
+                
+            }
+            count=0;
+            		getEqual();
+
+            
+            
+        }
+        
 		
-		
-		a= new int[]{1,3,5,7,9};
-		
-		System.out.println(Arrays.toString(a));
-		//System.out.println(getNthLargest(2));
-		
-		getEqual();
-		
+	}
+	
+	
+	public static void getEqual(int n){
 		
 	}
 	
@@ -47,13 +65,13 @@ public class Equal {
 			return;
 		}
 		//System.out.println("2nd highest is "+sHigh+" third highest is "+tHigh);
-		int sum=sHigh-tHigh;
+		int sum=a[sHigh]-a[tHigh];
 		for(int i=0;i<a.length;i++){
-			if(a[i]!=sHigh)
+			if(i!=sHigh)
 				a[i]=a[i]+sum;
 		}
 		count++;
-		System.out.println("what up??? "+Arrays.toString(a));
+		//System.out.println(Arrays.toString(a));
 		
 		getEqual();
 	}
@@ -72,9 +90,13 @@ public class Equal {
 			i.next();
 			j++;
 		}
-		
-		
-		return i.next();
+		int x=i.next();
+		int k;
+		for(k=0;k<a.length;k++)
+			if(a[k]==x){
+				break;
+			}
+		return k;
 	}
 	
 	
