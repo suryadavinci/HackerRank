@@ -1,9 +1,10 @@
 package algorithms.strings;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class TwoCharacters {
-	static HashSet<Character> visited= new HashSet<Character>();
+	static ArrayList<Character> visited= new ArrayList<Character>();
 	public static void main(String[] args) {
 		String s="abcabcabc";
 		
@@ -11,11 +12,15 @@ public class TwoCharacters {
 		for(int i=0;i<s.length();i++){
 			System.out.println(s.charAt(i));
 			if(!visited.contains(s.charAt(i))){
-				System.out.println("Replacing all "+s.substring(i,i+1));
-				System.out.println(testTString(s.replace(s.subSequence(i, i+1), "")));
 				visited.add(s.charAt(i));
 			}
 			
+		}
+		
+		for(int i=0;i<visited.size();i++){
+			for(int j=i+1;j<visited.size();j++){
+				
+			}
 		}
 		
 		
@@ -38,4 +43,13 @@ public class TwoCharacters {
 		
 		return true;
 	}
+	
+	
+	public static String replaceBadString(char one , char two){
+		
+		
+		return null;
+		
+	}
+	
 }
