@@ -15,6 +15,8 @@ public class SuperReducedString {
 			if(s.charAt(i)==s.charAt(i+1))
 				{
 					s=s.substring(0,i)+s.substring(i+2);
+					if(i!=0)
+						i=0;
 				}
 			else
 				i++;
