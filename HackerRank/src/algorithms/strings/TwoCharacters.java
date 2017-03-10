@@ -1,12 +1,18 @@
 package algorithms.strings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+
+import datastructures.AllUtils;
 
 public class TwoCharacters {
 	static ArrayList<Character> visited= new ArrayList<Character>();
 	public static void main(String[] args) {
 		String s="abcabcabc";
+		
+		
+		
 		
 		System.out.println(s);
 		for(int i=0;i<s.length();i++){
