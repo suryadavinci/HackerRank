@@ -19,7 +19,11 @@ public class SuperReducedString {
 			else
 				i++;
 		}
-		
+		if(s.length()==0)
+			{
+				System.out.println("Empty String");
+				return;
+			}
 		System.out.println(s);
 		
 	}
